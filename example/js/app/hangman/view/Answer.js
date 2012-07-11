@@ -1,11 +1,11 @@
 define(function () {
 
-	var Man = Backbone.View.extend({
+	var Answer = Backbone.View.extend({
 
 		render: function () {
 			return this;
 		}
 	});
 
-	return Man;
+	return Answer;
 });

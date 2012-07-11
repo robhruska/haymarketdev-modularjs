@@ -1,19 +1,22 @@
 define([
-    'hangman/model/Letter'
+	'hangman/model/Letter'
 ], function (Letter) {
 
-    var Game = Backbone.Model.extend({
+	var Game = Backbone.Model.extend({
 
-	initialize: function (attrs) {
-	    this.letters = new Backbone.Collection();
-	    for (var i = 97; i <= 122; i++) {
-		var letter = new Letter({
-		    character: String.fromCharCode(i)
-		});
-		this.letters.add(letter);
-	    }
-	}
-    });
+		initialize: function (attrs) {
+			this.letters = new Backbone.Collection();
+			for (var i = 97; i <= 122; i++) {
+				this.letters.add(new Letter({
+					character: String.fromCharCode(i)
+				}));
+			}
+		},
 
-    return Game;
+		guess: function (letter) {
+			// TODO mark guessed
+		}
+	});
+
+	return Game;
 });

@@ -1,22 +1,35 @@
 define(function () {
 
-    var Letter = Backbone.View.extend({
+	var Letter = Backbone.View.extend({
 
-	initialize: function (options) {
-	    this.model.on('change:guessed', this.setGuessed, this);
-	},
+		tagName: 'li',
+		className: 'letter',
 
-	render: function () {
-	    this.$el.text(this.model.get('character'));
-	    this.setGuessed();
+		initialize: function (options) {
+			this.model.on('change:guessed', this.setGuessed, this);
+		},
 
-	    return this;
-	},
+		events: {
+			'click a': 'handleClick'
+		},
 
-	setGuessed: function () {
-	    this.$el.toggleClass('guessed', this.model.get('guessed'));
-	}
-    });
+		render: function () {
+			var text = this.model.get('character');
+			this.$el.append('<a href="#">' + text + '</a>');
 
-    return Letter;
+			this.setGuessed();
+			return this;
+		},
+
+		handleClick: function (e) {
+			this.model.set('guessed', true);
+			return false;
+		},
+
+		setGuessed: function () {
+			this.$el.toggleClass('guessed', this.model.get('guessed'));
+		}
+	});
+
+	return Letter;
 });

@@ -1,0 +1,41 @@
+html,
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	text-align: center;
+}
+
+.letters {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.letters .letter {
+	display: inline-block;
+}
+
+.letters .letter > a {
+	border: 1px solid #000055;
+	border-radius: 4px;
+	color: #000055;
+	display: inline-block;
+	height: 1.5em;
+	line-height: 1.5em;
+	margin: 2px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	width: 1.5em;
+}
+
+.letters .letter > a:hover {
+	background-color: #000088;
+	color: #FFF;
+}
+
+.letters .letter.guessed > a {
+	border: 1px solid #CCC;
+	background-color: #CCC;
+	color: #333;
+	cursor: default;
+}
