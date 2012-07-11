@@ -66,7 +66,7 @@
       </article>
 
       <article>
-	<h1>The Problem</h1>
+	<h2>The Problem</h2>
       </article>
 
       <article>
@@ -80,8 +80,6 @@
       </article>
 
       <article>
-	<h3>This script is:</h3>
-
 	<ul class="build">
 	  <li>Friggin' huge</li>
 	  <!-- Notes:
@@ -104,17 +102,19 @@
 	       - Who is the code for? You in six months. Your fellow devs.
 	    -->
 
+
 	  <!-- Notes:
 	       - To be fair, this file's a WIP. It does have some module separation
 	       inside of it. But it wouldn't have existed with module development up front.
 
 	       Segue: that's we need to think using modules from the outset
 	    -->
+	  <li><strong>Needs structure and organization</strong></li>
 	</ul>
       </article>
 
       <article>
-	<h1>Modules</h1>
+	<h2>Modules</h2>
       </article>
 
       <article>
@@ -212,7 +212,7 @@ new window.myModule.MyConstructor(foo, bar);
       </article>
 
       <article>
-	<h1>Need some help</h1>
+	<h2>Helper Libraries</h2>
 	<!-- Notes:
 	     - What kinds of things should a module define?
 	     - Attaching them all to window or a global namespace still seems cumbersome and hacky.
@@ -226,6 +226,33 @@ new window.myModule.MyConstructor(foo, bar);
 	  <img class="tool" src="img/requirejs.png"/>
 	</div>
       </article>
+
+      <article>
+	<h3><img src="img/backbone.png"/></h3>
+
+	<ul>
+	  <li>MVC-style structure: models, views, routing</li>
+	  <li>Model & collection events</li>
+	</ul>
+      </article>
+
+      <article>
+	<h3><img src="img/requirejs.png"/></h3>
+	<ul>
+	  <li>Separates modules into their own files</li>
+	  <li>Module "importing" and dependency management</li>
+	</ul>
+      </article>
+
+      <article>
+	<h2>Example Application - Chess</h2>
+      </article>
+
+      <article>
+	<h3>1. Identify components</h3>
+	<img src="img/sketch.png"/>
+      </article>
+
 
 <!--      
       <article class='biglogo'>
