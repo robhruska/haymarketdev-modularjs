@@ -17,6 +17,12 @@ define([
 			this.letters.on('change:guessed', this.checkForEndgame, this)
 		},
 
+		hasGuessed: function (character) {
+			return this.letters.find(function (letter) {
+				return letter.get('character') === character;
+			}).get('guessed');
+		},
+
 		checkForEndgame: function () {
 			if (this.hasWon()) {
 				this.trigger('win');
