@@ -4,6 +4,8 @@ define([
 
 	var Game = Backbone.Model.extend({
 
+		// TODO doesn't work with uppercase letters
+
 		initialize: function (attrs) {
 			this.maxMisses = 5;
 
