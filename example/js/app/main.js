@@ -3,7 +3,9 @@ require([
 	'hangman/view/Board'
 ], function (Game, Board) {
 
-	var game = new Game('jabberwock');
+	var game = new Game({
+		word: 'jabberwock'
+	});
 
 	var board = new Board({
 		model: game
