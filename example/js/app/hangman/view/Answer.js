@@ -23,7 +23,6 @@ define(function () {
 			$.map(word.split(''), function (c) {
 				var li = $('<li>');
 				if (self.model.hasGuessed(c)) {
-					console.log('true');
 					li.text(c);
 				}
 				self.$el.append(li);
