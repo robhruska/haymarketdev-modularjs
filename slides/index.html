@@ -24,7 +24,32 @@
   <style>
     /* Your individual styles here, or just use inline styles if that’s
        what you want. */
-    
+
+		/* from http://beautifulpixels.com/goodies/create-custom-webkit-scrollbar/ */
+		::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+		}
+ 
+		::-webkit-scrollbar-button:start:decrement,
+		::-webkit-scrollbar-button:end:increment  {
+		height: 30px;
+		display: block;
+		background-color: transparent;
+		}
+
+		::-webkit-scrollbar-track-piece  {
+		background-color: #3b3b3b;
+		-webkit-border-radius: 6px;
+		}
+		
+		::-webkit-scrollbar-thumb:horizontal,
+		::-webkit-scrollbar-thumb:vertical {
+		height: 50px;
+		background-color: #666;
+		-webkit-border-radius: 6px;
+		}
+   
     .slides.template-hudl > article:not(.nobackground):not(.biglogo) {
         background: #FFF url(hudl.png) 97% 97% no-repeat;
     }
@@ -50,6 +75,28 @@
         display: block;
         margin: 120px auto;
     }
+
+		.sketches img {
+		display: inline;
+		}
+
+		.sketch {
+		margin-right: 30px;
+		}
+
+		.slides.template-hudl > article.terminal {
+		background: black !important;
+		}
+
+		.slides.template-hudl > article.terminal > h3 {
+		font-family: 'Lucida Console', 'Courier New', monospace;
+		font-size: 16px;
+		color: #BBB;
+		font-weight: normal;
+		display: block;
+		border-bottom: 1px dotted #BBB;
+		margin-bottom: 16px;
+		}
     
   </style>
 
@@ -248,18 +295,46 @@ new window.myModule.MyConstructor(foo, bar);
 	<h2>Example Application - Hangman</h2>
       </article>
 
-      <article>
+      <article class="sketches">
 	<h3>Identify components</h3>
-	<img src="img/sketch.png"/>
-	<div class="build">
-	  <img src="img/sketch-annotated.png"/>
-	</div>
+	<img src="img/sketch.png" class="sketch"/>
+	<span class="build">
+	  <img src="img/sketch-annotated.png" class="sketch-annotated"/>
+	</span>
       </article>
 
-      <article>
-	<!-- TODO screenshot of expanded directory structure -->
-	<!-- show models, views as related to annotated sketch -->
+      <article class="terminal">
+				<img src="img/directory-structure.png" class="directory-structure"/>
       </article>
+
+			<article class="terminal">
+				<h3>index.html</h3>
+				<div style="overflow-x: auto; overflow-y: hidden;">
+					<img src="img/code-index-html.png"/>
+				</div>
+			</article>
+
+			<article class="terminal">
+				<h3>js/app/main.js</h3>
+				<img src="img/code-main-js.png"/>
+			</article>
+
+			<article class="terminal">
+				<h3>js/app/hangman/model/Game.js</h3>
+				<div style="height: 540px; overflow: auto;">
+					<img src="img/code-game-js.png"/>
+				</div>
+			</article>
+
+			<article class="terminal">
+				<h3>js/app/hangman/view/Board.js</h3>
+				<img src="img/code-board-js.png"/>
+			</article>
+
+			<article class="terminal">
+				<h3>js/app/hangman/view/Letters.js</h3>
+				<img src="img/code-letters-js.png"/>
+			</article>
 
       <article>
 	<!-- TODO some github screenshots of important code bits -->
