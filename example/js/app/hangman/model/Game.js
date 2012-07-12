@@ -56,7 +56,7 @@ define([
 		},
 
 		hasLost: function () {
-			return this.countMisses() > this.maxMisses;
+			return this.countMisses() >= this.maxMisses;
 		}
 	});
 
