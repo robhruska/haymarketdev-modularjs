@@ -1,0 +1,73 @@
+/* from http://beautifulpixels.com/goodies/create-custom-webkit-scrollbar/ */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment  {
+	height: 30px;
+	display: block;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-track-piece  {
+	background-color: #3b3b3b;
+	-webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal,
+::-webkit-scrollbar-thumb:vertical {
+	height: 50px;
+	background-color: #666;
+	-webkit-border-radius: 6px;
+}
+
+.slides.template-hudl > article:not(.nobackground):not(.biglogo) {
+	background: #FFF url(hudl.png) 97% 97% no-repeat;
+}
+
+.odg-list > img:not(.odg-annotation) {
+    box-shadow: 0 4px 4px #DDD;
+    margin-bottom: 16px;
+}
+
+#odg-annotation2 {
+    position: absolute;
+    top: 310px;
+    left: 120px;
+}
+
+#odg-annotation3 {
+    position: absolute;
+    top: 510px;
+    left: 130px;
+}
+
+img.tool {
+    display: block;
+    margin: 120px auto;
+}
+
+.sketches img {
+	display: inline;
+}
+
+.sketch {
+	margin-right: 30px;
+}
+
+.slides.template-hudl > article.terminal {
+	background: black !important;
+}
+
+.slides.template-hudl > article.terminal > h3 {
+	font-family: 'Lucida Console', 'Courier New', monospace;
+	font-size: 16px;
+	color: #BBB;
+	font-weight: normal;
+	display: block;
+	border-bottom: 1px dotted #BBB;
+	margin-bottom: 16px;
+}
+
