@@ -66,3 +66,14 @@
 	margin-bottom: 16px;
 }
 
+a.clicky-link {
+	color: black;
+	text-decoration: none;
+	border-radius: 8px;
+	display: block;
+	padding: 8px 16px 16px 16px;
+}
+
+a.clicky-link:hover {
+	background-color: #777;
+}
