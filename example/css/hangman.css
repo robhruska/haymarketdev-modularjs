@@ -62,7 +62,7 @@ body {
 }
 
 .answer.win {
-	background-color: green;
+	background-color: lime;
 }
 
 .answer.lose {

@@ -4,7 +4,7 @@ require([
 ], function (Game, Board) {
 
 	var game = new Game({
-		word: 'jabberwock'
+		word: 'shenanigans'
 	});
 
 	var board = new Board({
