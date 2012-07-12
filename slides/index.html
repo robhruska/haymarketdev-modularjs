@@ -87,7 +87,10 @@
       </article>
 
       <article>
-				<h2>Modules</h2>
+	<h2>Modules</h2>
+	<!-- Notes:
+	     - a.k.a. AMDs, Closures
+	  -->
       </article>
 
       <article>
@@ -96,27 +99,20 @@
 (function () {
     var foo = 'bar';
 }());
-				</pre>
+	</pre>
+	<!-- Notes:
+	     - Self-contained, prevents scope leakage
+	  -->
       </article>
 
+      <!-- TODO make the examples below less abstract -->
+
       <article>
-				<h4>Self-contained</h4>
-				<pre>
-(function () {
+	<pre>
+myModule = (function () {
     var foo = 'bar';
-}());
-				</pre>
-				<!-- Notes:
-						 - Helps prevent scope creep/pollution
-					-->
-      </article>
-
-      <article>
-				<h4>Assignable</h4>
-				<pre>
-window.myModule = (function () {
-    function doSomething () {
-        // code and whatnot
+    function doSomething (value) {
+        foo = value;
     }
 
     return {
@@ -124,15 +120,18 @@ window.myModule = (function () {
     };
 }());
 
-window.myModule.doSomething();
-				</pre>
+myModule.doSomething();
+	</pre>
 
+	<i>Exposes some functions</i>
+	<!-- Notes:
+	     - Defined interface into the module, encapsulation
+	  -->
       </article>
 
       <article>
-				<h4>Assignable</h4>
-				<pre>
-window.myModule = (function () {
+	<pre>
+MyClass = (function () {
     function MyConstructor (foo, bar) {
         this.myMethod = ...
     }
@@ -140,48 +139,53 @@ window.myModule = (function () {
     return MyConstructor;
 }());
 
-new window.myModule.MyConstructor(foo, bar);
-				</pre>
+new MyClass(foo, bar);
+	</pre>
+	<i>Defines a constructor</i>
       </article>
 
       <article>
-				<h4>Parameterizable</h4>
-				<pre>
-window.myModule = (function ($, myDependency) {
+	<pre>
+MyClass = (function ($, myDependency) { // <-- parameters
     function MyConstructor (foo, bar) {
         this.myMethod = ...
     }
 
     return MyConstructor;
-}(jQuery, window.otherModule.someDependency));
+}(jQuery, MyOtherModule)); // <-- arguments
 
-new window.myModule.MyConstructor(foo, bar);
-				</pre>
-				<!-- Notes:
-						 - a.k.a importing
-					-->
+new MyClass(foo, bar);
+	</pre>
+
+	<i>Importing via function arguments</i>
+	<!-- Notes:
+	     - a.k.a importing
+	  -->
       </article>
 
       <article>
-				<h3>Good modules:</h3>
-				<ul class="build">
-					<li>Are lightweight</li>
-					<!-- Notes:
-							 - Each one tackles a small task, something specific
-						-->
+	<h3>Good modules:</h3>
+	<ul class="build">
+	  <li>Are lightweight and specific</li>
+	  <!-- Notes:
+	       - Each one tackles a small task, something specific
+	    -->
 
-					<li>Are specific</li>
-					<!-- Notes:
+	  <li>Are particular about what they return / expose</li>
+	  <li>Avoid global interaction</li>
+	  <!-- Notes:
+	       - e.g. using window, using global libraries (e.g. jQuery, although arguable)
+	    -->
+	</ul>
+      </article>
 
-						-->
-
-					<li>Are particular about what they return</li>
-					<!-- Notes:
-
-						-->
-
-					<li>Stay away from <code>window</code></li>
-				</ul>
+      <article>
+	<h2>Libraries</h2>
+	<!-- Notes:
+	     - What kinds of things should a module define?
+	     - Attaching them all to window or a global namespace still seems cumbersome and hacky.
+	     - When we have a lot of them, run into dependency management concerns.
+	  -->
       </article>
 
       <article>
@@ -203,11 +207,15 @@ new window.myModule.MyConstructor(foo, bar);
       </article>
 
       <article>
-				<h3><img src="img/requirejs.png"/></h3>
-				<ul>
-					<li>Separates modules into their own files</li>
-					<li>Module "importing" and dependency management</li>
-				</ul>
+	<h3><img src="img/requirejs.png"/></h3>
+	<ul>
+	  <li>Module loader</li>
+	  <!-- Notes:
+	       - Not a new concept; node.js, YUI
+	    -->
+	  <li>Separates modules into their own files</li>
+	  <li>Module "importing" and dependency management</li>
+	</ul>
       </article>
 
       <article>
