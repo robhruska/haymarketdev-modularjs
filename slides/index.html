@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 
 <!--
-		Google HTML5 slide template
+Google HTML5 slide template
 
-		Authors:
+Authors:
 
-		Luke Mahé (code)
+    Luke Mahé (code)
     Marcin Wichary (code and design)
     
     Dominic Mazzoni (browser compatibility)
     Charles Chen (ChromeVox support)
 
-		URL: http://code.google.com/p/html5slides/
-	-->
+URL: http://code.google.com/p/html5slides/
+-->
 
 <html>
   <head>
@@ -22,7 +22,7 @@
     <script
        src='http://html5slides.googlecode.com/svn/trunk/slides.js'></script>
 
-		<link rel="stylesheet" type="text/css" href="slides.css"/>
+    <link rel="stylesheet" type="text/css" href="slides.css"/>
   </head>
 
   <body style='display: none'>
@@ -30,82 +30,48 @@
     <section class='slides layout-regular template-hudl'>
       
       <article>
-				<h1>Writing Modular JavaScript</h1>
-				<p>
-					Rob Hruska<br/>
-					12 July 2012
-				</p>
-      </article>
-
-			<!-- Notes:
-					 - Thanks: Hudl (venue, food), Chris Davis
-					 - General structure:
-					 -   Present for 30 minutes or so
-					 -   Ad-hoc discussion about javascript dev experiences, tools you use, etc.
-				-->
-
-      <article>
-				<h2>The Problem</h2>
+	<h1>Writing Modular JavaScript</h1>
+	<p>
+	  Rob Hruska<br/>
+	  12 July 2012
+	</p>
       </article>
 
       <article>
-				<div class="build odg-list" style="overflow: hidden;">
-					<img src="img/odg1.png"/>
-					<img src="img/odg2.png"/>
-					<img src="img/odg-annotation2.png" id="odg-annotation2" class="odg-annotation"/>
-					<img src="img/odg3.png"/>
-					<img src="img/odg-annotation3.png" id="odg-annotation3" class="odg-annotation"/>
-				</div>
+	<h2>The Problem</h2>
       </article>
 
       <article>
-				<ul class="build">
-					<li>Friggin' huge</li>
-					<!-- Notes:
-							 - It's difficult to find anything unless you've been working with it for a week.
-						-->
+	<div class="build odg-list" style="overflow: hidden;">
+	  <img src="img/odg1.png"/>
+	  <img src="img/odg2.png"/>
+	  <img src="img/odg-annotation2.png" id="odg-annotation2" class="odg-annotation"/>
+	  <img src="img/odg3.png"/>
+	  <img src="img/odg-annotation3.png" id="odg-annotation3" class="odg-annotation"/>
+	</div>
+      </article>
 
-					<li>Doing too much</li>
-					<!-- Notes:
-							 - What is this file supposed to do?
-							 - When we go to add a feature, where does it go?
-						-- Since there's no separation, it usually just gets plopped right in.
-						-->
-
-					<li>Asking for bugs</li>
-					<!-- Notes:
-							 Bugs within and outside the context of this script..
-							 - Doing a bunch of stuff. Some at the top, some at the bottom. Someone's
-							 gonna miss something when they update or fix.
-							 - Messing with window.
-							 - Who is the code for? You in six months. Your fellow devs.
-
-							 Segue: that's we need to think using modules from the outset
-						-->
-					<li><strong>Needs structure and organization</strong></li>
-				</ul>
+      <article>
+	<ul class="build">
+	  <li>Friggin' huge</li>
+	  <li>Doing too much</li>
+	  <li>Asking for bugs</li>
+	  <li><strong>Needs structure and organization</strong></li>
+	</ul>
       </article>
 
       <article>
 	<h2>Modules</h2>
-	<!-- Notes:
-	     - a.k.a. AMDs, Closures
-	  -->
       </article>
 
       <article>
-				<h4>Anonymous function declaration / invocation</h4><!-- TODO change -->
-				<pre>
+	<h4>Anonymous function declaration / invocation</h4>
+	<pre>
 (function () {
     var foo = 'bar';
 }());
 	</pre>
-	<!-- Notes:
-	     - Self-contained, prevents scope leakage
-	  -->
       </article>
-
-      <!-- TODO make the examples below less abstract -->
 
       <article>
 	<pre>
@@ -116,7 +82,7 @@ myModule = (function () {
     }
 
     return {
-         doSomething: doSomething
+        doSomething: doSomething
     };
 }());
 
@@ -124,9 +90,6 @@ myModule.doSomething();
 	</pre>
 
 	<i>Exposes some functions</i>
-	<!-- Notes:
-	     - Defined interface into the module, encapsulation
-	  -->
       </article>
 
       <article>
@@ -158,152 +121,117 @@ new MyClass(foo, bar);
 	</pre>
 
 	<i>Importing via function arguments</i>
-	<!-- Notes:
-	     - a.k.a importing
-	  -->
       </article>
 
       <article>
 	<h3>Good modules:</h3>
 	<ul class="build">
 	  <li>Are lightweight and specific</li>
-	  <!-- Notes:
-	       - Each one tackles a small task, something specific
-	    -->
-
 	  <li>Are particular about what they return / expose</li>
 	  <li>Avoid global interaction</li>
-	  <!-- Notes:
-	       - e.g. using window, using global libraries (e.g. jQuery, although arguable)
-	    -->
 	</ul>
       </article>
 
       <article>
 	<h2>Libraries</h2>
-	<!-- Notes:
-	     - What kinds of things should a module define?
-	     - Attaching them all to window or a global namespace still seems cumbersome and hacky.
-	     - When we have a lot of them, run into dependency management concerns.
-	  -->
       </article>
 
       <article>
-				<h2>Helper Libraries</h2>
-				<!-- Notes:
-						 - What kinds of things should a module define?
-						 - Attaching them all to window or a global namespace still seems cumbersome and hacky.
-						 - When we have a lot of them, run into dependency management concerns.
-					-->
-      </article>
+	<h3><img src="img/backbone.png"/></h3>
 
-      <article>
-				<h3><img src="img/backbone.png"/></h3>
-
-				<ul>
-					<li>MVC-style structure: models, views, routing</li>
-					<li>Model & collection events</li>
-				</ul>
+	<ul>
+	  <li>MVC-style structure: models, views, routing</li>
+	  <li>Model & collection events</li>
+	</ul>
       </article>
 
       <article>
 	<h3><img src="img/requirejs.png"/></h3>
 	<ul>
 	  <li>Module loader</li>
-	  <!-- Notes:
-	       - Not a new concept; node.js, YUI
-	    -->
 	  <li>Separates modules into their own files</li>
 	  <li>Module "importing" and dependency management</li>
 	</ul>
       </article>
 
       <article>
-				<h2>Example Application - Hangman</h2>
+	<h2>Example Application - Hangman</h2>
       </article>
 
       <article class="sketches">
-				<h3>Identify components</h3>
-				<img src="img/sketch.png" class="sketch"/>
-				<span class="build">
-					<img src="img/sketch-annotated.png" class="sketch-annotated"/>
-					<div>
-						Views:
-						<strong>Man</strong>,
-						<strong>Letters</strong>,
-						<strong>Letter</strong>,
-						<strong>Answer</strong>,
-						<strong>Board</strong>
-					</div>
-					<div>
-						Models:
-						<strong>Game</strong>,
-						<strong>Letter</strong>
-					</div>
-				</span>
+	<h3>Identify components</h3>
+	<img src="img/sketch.png" class="sketch"/>
+	<span class="build">
+	  <img src="img/sketch-annotated.png" class="sketch-annotated"/>
+	  <div>
+	    Views:
+	    <strong>Man</strong>,
+	    <strong>Letters</strong>,
+	    <strong>Letter</strong>,
+	    <strong>Answer</strong>,
+	    <strong>Board</strong>
+	  </div>
+	  <div>
+	    Models:
+	    <strong>Game</strong>,
+	    <strong>Letter</strong>
+	  </div>
+	</span>
       </article>
 
       <article class="terminal">
-				<img src="img/directory-structure.png" class="directory-structure"/>
+	<img src="img/directory-structure.png" class="directory-structure"/>
       </article>
 
-			<article class="terminal">
-				<h3>index.html</h3>
-				<div style="overflow-x: auto; overflow-y: hidden;">
-					<img src="img/code-index-html.png"/>
-				</div>
-			</article>
+      <article class="terminal">
+	<h3>index.html</h3>
+	<div style="overflow-x: auto; overflow-y: hidden;">
+	  <img src="img/code-index-html.png"/>
+	</div>
+      </article>
 
-			<article class="terminal">
-				<h3>js/app/main.js</h3>
-				<img src="img/code-main-js.png"/>
-			</article>
+      <article class="terminal">
+	<h3>js/app/main.js</h3>
+	<img src="img/code-main-js.png"/>
+      </article>
 
-			<article class="terminal">
-				<h3>js/app/hangman/model/Game.js</h3>
-				<div style="height: 540px; overflow: auto;">
-					<img src="img/code-game-js.png"/>
-				</div>
-			</article>
+      <article class="terminal">
+	<h3>js/app/hangman/model/Game.js</h3>
+	<div style="height: 540px; overflow: auto;">
+	  <img src="img/code-game-js.png"/>
+	</div>
+      </article>
 
-			<article class="terminal">
-				<h3>js/app/hangman/view/Board.js</h3>
-				<img src="img/code-board-js.png"/>
-			</article>
+      <article class="terminal">
+	<h3>js/app/hangman/view/Board.js</h3>
+	<img src="img/code-board-js.png"/>
+      </article>
 
-			<article class="terminal">
-				<h3>js/app/hangman/view/Letters.js</h3>
-				<img src="img/code-letters-js.png"/>
-			</article>
+      <article class="terminal">
+	<h3>js/app/hangman/view/Letters.js</h3>
+	<img src="img/code-letters-js.png"/>
+      </article>
 
-			<article class="build">
-				<ul>
-					<li>Clean and organized</li>
-					<li>Separated into logical pieces</li>
-					<li>Testable</li>
-					<li>Awesome</li>
-				</ul>
-			</article>
+      <article class="build">
+	<ul>
+	  <li>Clean and organized</li>
+	  <li>Separated into logical pieces</li>
+	  <li>Testable</li>
+	  <li>Awesome</li>
+	</ul>
+      </article>
 
-			<!-- Notes:
-					 - Easy to extend, work with. We know where everything is.
-				-->
+      <article>
+	<h1><a class="clicky-link" href="../example/index.html" target="_blank" style="color: black; text-decoration: none;">Clicky Link</a></h1>
+      </article>
 
-			<article>
-				<h1><a class="clicky-link" href="../example/index.html" target="_blank" style="color: black; text-decoration: none;">Clicky Link</a></h1>
-			</article>
-
-			<!-- Notes:
-					 - There are other tools that exist that fill these gaps.
-				-->
-
-			<article>
-				<h3>Resources</h3>
-				<ul>
-					<li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD">amdjs-api (Github)</a></li>
-					<li><a href="http://backbonejs.org">http://backbonejs.org</a></li>
-					<li><a href="http://requirejs.org">http://requirejs.org</a></li>
-				</ul>
-			</article>
+      <article>
+	<h3>Resources</h3>
+	<ul>
+	  <li><a href="https://github.com/amdjs/amdjs-api/wiki/AMD">amdjs-api (Github)</a></li>
+	  <li><a href="http://backbonejs.org">http://backbonejs.org</a></li>
+	  <li><a href="http://requirejs.org">http://requirejs.org</a></li>
+	</ul>
+      </article>
   </body>
 </html>
